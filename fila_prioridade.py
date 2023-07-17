@@ -40,7 +40,7 @@ class FilaPrioridade:
             return None
         else:
             return self.__inicio
-        pass
+       
 
 
     # insere um item na fila de prioridade e retorna True, se o item for inserido
@@ -72,8 +72,13 @@ class FilaPrioridade:
     # remove o primeiro item da fila de prioridade, caso não esteja vazia, e retorna o Nó
     # se a fila de prioridade estiver vazia, lança uma exceção: raise Exception("mensagem de erro")
     def remove(self) -> No:
-        # implementação do método
-        pass
+        if self.is_empty():
+            raise Exception("A fila de prioridade está vazia.")
+        no_removido = self.__inicio
+        self._inicio = self._inicio.prox
+        self.__qtdItens -= 1
+        return no_removido
+        
 
 
     # retorna uma lista de tuplas com os itens (valor e prioridade) da fila de prioridade 
@@ -81,8 +86,17 @@ class FilaPrioridade:
     # caso a fila de prioridade esteja vazia, imprime uma mensagem informando
     # que a fila de prioridade está vazia e retorna uma lista vazia
     def display(self) -> list[tuple()]:
-        # implementação do método
-        pass
+        if self.is_empty():
+            print("A fila de prioridade está vazia.")
+            return []
+        else:
+            lista = []
+            apontador = self.__inicio
+            for i in range(self.size()):
+                lista.append((apontador.dado, apontador.prioridade))
+                apontador = apontador.prox
+            return lista
+        
     
 
     # retorna a quantidade de elementos na fila de prioridade
