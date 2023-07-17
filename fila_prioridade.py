@@ -33,7 +33,7 @@ class FilaPrioridade:
     # Retorna uma referência para o primeiro item da fila de prioridade
     # Caso a lista esteja vazia, retorna None
     def first(self) -> No:
-        if self._qtdItens >= self.__capacidade:
+        if self.is_empty():
             return None
         else:
             return self.__inicio
