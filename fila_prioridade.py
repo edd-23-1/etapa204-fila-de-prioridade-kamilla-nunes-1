@@ -26,7 +26,7 @@ class FilaPrioridade:
     
     # retorna True se a fila de prioridade está cheia, False caso contrário
     def is_full(self) -> bool:
-        if self.__qtdItens == 0
+        if self.__qtdItens == 0:
             return True
         else:
             return False
