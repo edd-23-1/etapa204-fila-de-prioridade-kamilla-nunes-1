@@ -26,10 +26,7 @@ class FilaPrioridade:
     
     # retorna True se a fila de prioridade está cheia, False caso contrário
     def is_full(self) -> bool:
-        if self.__qtdItens == 0:
-            return True
-        else:
-            return False
+        return self.__qtdItens == self.__capacidade
         
 
 
@@ -50,18 +47,16 @@ class FilaPrioridade:
 
         if self.is_full():
             raise Exception("A fila de prioridade está cheia.")
-        elif prioridade > self.__inicio.prioridade:
+        elif self.is_empty() or prioridade > self.__inicio.prioridade::
             novo_no.prox = self.__inicio
             self.__inicio = novo_no
         else:
-            apontador = self.prox
-            
-        self._inicio = novo_no
+            apontador = self.__inicio
         while apontador.prox and prioridade <= apontador.prox.prioridade:
             apontador = apontador.prox
 
-            novo_no.prox = apontador.prox
-            apontador.prox = novo_no
+        novo_no.prox = apontador.prox
+        apontador.prox = novo_no
 
         self.__qtdItens += 1    
         return True
