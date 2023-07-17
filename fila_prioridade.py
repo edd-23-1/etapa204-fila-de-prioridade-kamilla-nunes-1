@@ -52,11 +52,11 @@ class FilaPrioridade:
             self.__inicio = novo_no
         else:
             apontador = self.__inicio
-        while apontador.prox and prioridade <= apontador.prox.prioridade:
-            apontador = apontador.prox
+            while apontador.prox and prioridade <= apontador.prox.prioridade:
+                apontador = apontador.prox
 
-        novo_no.prox = apontador.prox
-        apontador.prox = novo_no
+            novo_no.prox = apontador.prox
+            apontador.prox = novo_no
 
         self.__qtdItens += 1    
         return True
