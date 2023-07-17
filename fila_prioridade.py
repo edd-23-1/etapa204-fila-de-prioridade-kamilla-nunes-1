@@ -26,7 +26,7 @@ class FilaPrioridade:
     
     # retorna True se a fila de prioridade está cheia, False caso contrário
     def is_full(self) -> bool:
-        if self._qtdItens == 0
+        if self.__qtdItens == 0
             return True
         else:
             return False
@@ -36,15 +36,37 @@ class FilaPrioridade:
     # Retorna uma referência para o primeiro item da fila de prioridade
     # Caso a lista esteja vazia, retorna None
     def first(self) -> No:
-        # implementação do método
+        if self._qtdItens == 0:
+            return None
+        else:
+            return self.__inicio
         pass
 
 
     # insere um item na fila de prioridade e retorna True, se o item for inserido
     # se a fila de prioridade estiver cheia, lança uma exceção: raise Exception("mensagem de erro")
     def add(self, valor, prioridade) -> bool:
-        # implementação do método
-        pass
+        novo_no = No(valor, prioridade)
+
+        if self.is_full():
+            raise Exception("A fila de prioridade está cheia.")
+        elif prioridade > self.__inicio.prioridade:
+            novo_no.prox = self.__inicio
+            self.__inicio = novo_no
+        else:
+            apontador = self.prox
+            
+        self._inicio = novo_no
+        while apontador.prox and prioridade <= apontador.prox.prioridade:
+            apontador = apontador.prox
+
+            novo_no.prox = apontador.prox
+            apontador.prox = novo_no
+
+        self.__qtdItens += 1    
+        return True
+        
+       
 
     
     # remove o primeiro item da fila de prioridade, caso não esteja vazia, e retorna o Nó
@@ -66,5 +88,5 @@ class FilaPrioridade:
     # retorna a quantidade de elementos na fila de prioridade
     # se a fila de prioridade estiver vazia, retorna ZERO
     def size(self) -> int:
-        # implementação do método
-        pass
+        return self.__qtdItens
+        
