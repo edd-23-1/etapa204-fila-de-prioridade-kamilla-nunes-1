@@ -70,7 +70,7 @@ class FilaPrioridade:
         if self.is_empty():
             raise Exception("A fila de prioridade está vazia.")
         no_removido = self.__inicio
-        self._inicio = self._inicio.prox
+        self.__inicio = self.__inicio.prox
         self.__qtdItens -= 1
         return no_removido
         
