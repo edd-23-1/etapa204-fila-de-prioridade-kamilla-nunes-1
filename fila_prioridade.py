@@ -47,7 +47,7 @@ class FilaPrioridade:
 
         if self.is_full():
             raise Exception("A fila de prioridade está cheia.")
-        elif self.is_empty() or prioridade > self.__inicio.prioridade::
+        elif self.is_empty() or prioridade > self.__inicio.prioridade:
             novo_no.prox = self.__inicio
             self.__inicio = novo_no
         else:
